@@ -11,10 +11,13 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/activity_master.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/layout/activity_master_acitivity.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/activity_registration.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/input_file.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/retrieved_layout.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/update_data.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.35572916666666665" />
       </map>
     </option>

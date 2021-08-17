@@ -5,4 +5,8 @@
         <item>Canceled</item>
         <item>Done</item>
     </string-array>
+    <string name="title_activity_master_acitivity">MasterAcitivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Archived</string>
+    <string name="title_notifications">User</string>
 </resources>
