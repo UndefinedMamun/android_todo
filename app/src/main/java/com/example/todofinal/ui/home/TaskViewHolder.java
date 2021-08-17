@@ -11,7 +11,7 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class TaskViewHolder extends RecyclerView.ViewHolder {
-    View mView;
+    public View mView;
 
     public TaskViewHolder(@NonNull View itemView) {
         super(itemView);

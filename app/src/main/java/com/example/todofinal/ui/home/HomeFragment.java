@@ -8,8 +8,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -24,25 +22,19 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.todofinal.HomeActivity;
 import com.example.todofinal.Model;
 import com.example.todofinal.R;
+import com.example.todofinal.UpdateDialogue;
 import com.example.todofinal.databinding.FragmentHomeBinding;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.firebase.ui.database.ObservableSnapshotArray;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.Iterator;
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
@@ -56,12 +48,6 @@ public class HomeFragment extends Fragment {
     private String onlineUserID;
 
     private ProgressDialog loader;
-
-    private String key = "";
-    private String task;
-    private String date;
-    private String description;
-    private String status;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
@@ -99,7 +85,7 @@ public class HomeFragment extends Fragment {
         super.onStart();
 
         FirebaseRecyclerOptions<Model> options = new FirebaseRecyclerOptions.Builder<Model>().setQuery(
-                reference.orderByChild("status").startAt("Canceled").endAt("Done"),  Model.class).build();
+                reference.orderByChild("status").equalTo("Pending"),  Model.class).build();
 
         FirebaseRecyclerAdapter<Model, TaskViewHolder> adapter = new FirebaseRecyclerAdapter<Model, TaskViewHolder>(options) {
             @Override
@@ -112,13 +98,7 @@ public class HomeFragment extends Fragment {
                 holder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        key = getRef(position).getKey();
-                        task = model.getTask();
-                        description = model.getDescription();
-                        date = model.getDate();
-                        status = model.getStatus();
-
-                        updateTask();
+                        new UpdateDialogue(binding.getRoot().getContext(), model).updateTask();
                     }
                 });
             }
@@ -213,97 +193,6 @@ public class HomeFragment extends Fragment {
         });
 
         dialog.show();//show the dialog
-    }
-
-    private void updateTask(){
-        Context rootContext = binding.getRoot().getContext();
-        AlertDialog.Builder myDialog = new AlertDialog.Builder(rootContext);
-        LayoutInflater inflater = LayoutInflater.from(rootContext);
-        View view = inflater.inflate(R.layout.update_data, null);
-        myDialog.setView(view);
-
-        AlertDialog dialog = myDialog.create();
-
-        //make the corner round
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        Spinner spinner = (Spinner) view.findViewById(R.id.status_spinner);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(rootContext,
-                R.array.task_status, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
-
-
-        EditText mTask = view.findViewById(R.id.mEditedTask);
-        EditText mDescription = view.findViewById(R.id.mEditedDescription);
-        EditText mDate = view.findViewById(R.id.mEditedDate);
-
-        mTask.setText(task);
-        mTask.setSelection(task.length());
-
-        mDescription.setText(description);
-        mDescription.setSelection(description.length());
-
-        mDate.setText(date);
-        mDate.setSelection(date.length());
-
-        int spinnerPosition = adapter.getPosition(status);
-        spinner.setSelection(spinnerPosition);
-
-        Button deleteBtn = view.findViewById(R.id.btnDelete);
-        Button updateBtn = view.findViewById(R.id.btnUpdate);
-
-        updateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                task = mTask.getText().toString().trim();
-                description = mDescription.getText().toString().trim();
-                date = mDate.getText().toString().trim();
-                String status = spinner.getSelectedItem().toString();
-
-//                String date = DateFormat.getDateInstance().format(new Date());
-
-                Model model = new Model(task, description, key, date, status);
-
-                reference.child(key).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(rootContext, "Task has been updated successfully", Toast.LENGTH_SHORT).show();
-                        } else{
-                            String error = task.getException().toString();
-                            Toast.makeText(rootContext, "Update failed" + error, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-                dialog.dismiss();
-            }
-        });
-
-        deleteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                reference.child(key).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(rootContext, "Task has been deleted successfully", Toast.LENGTH_SHORT).show();
-                        } else{
-                            String error = task.getException().toString();
-                            Toast.makeText(rootContext, "Delete failed" + error, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-                dialog.dismiss();
-            }
-        });
-
-        dialog.show();
     }
 
     @Override

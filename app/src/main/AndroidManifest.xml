@@ -14,9 +14,6 @@
             android:exported="true"
             android:label="@string/title_activity_master_acitivity" />
         <activity
-            android:name=".HomeActivity"
-            android:exported="true" />
-        <activity
             android:name=".RegistrationActivity"
             android:exported="true" />
         <activity
