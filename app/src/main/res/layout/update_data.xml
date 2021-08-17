@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="@drawable/background_design">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/light"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Update your task"
+        android:textColor="@color/dark"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <EditText
+            android:id="@+id/mEditedTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Task"
+            android:layout_margin="10dp"
+            android:textSize="16dp"
+            app:backgroundTint='#a9adb0'/>
+
+        <EditText
+            android:id="@+id/mEditedDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Details"
+            android:layout_margin="10dp"
+            android:textSize="16dp"
+            app:backgroundTint='#a9adb0'/>
+
+        <EditText
+            android:id="@+id/mEditedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Time"
+            android:layout_margin="10dp"
+            android:textSize="16dp"
+            app:backgroundTint='#a9adb0'/>
+
+        <Spinner
+            android:id="@+id/status_spinner"
+            android:autofillHints="Set The status"
+            android:layout_margin="10dp"
+            android:textSize="16dp"
+            android:tooltipText="Set the status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="Delete"
+                app:backgroundTint="#ba6056"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/light"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="Update"
+                app:backgroundTint="@color/accent"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/light"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

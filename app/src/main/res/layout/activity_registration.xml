@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/background_design">
+
+
+    <EditText
+        android:id="@+id/RegistrationEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Email"
+        android:textColorHint="@color/light"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/light"
+        android:background="@drawable/inputs"
+        android:inputType="textEmailAddress"
+        android:drawablePadding="10dp"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/RegistrationPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/light"
+        android:hint="Enter Password"
+        android:layout_margin="10dp"
+        android:textColor="@color/light"
+        android:background="@drawable/inputs"
+        android:drawablePadding="10dp"
+        android:inputType="textPassword"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/RegistrationButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="doRegistration"
+        android:text="Register"
+        android:textAllCaps="false"
+        android:layout_margin="10dp"
+        android:textColor="#000"
+        app:backgroundTint="@color/light"
+        android:textSize="17sp"/>
+    <TextView
+        android:id="@+id/RegistrationPageQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goLogin"
+        android:text="Already have an account? Login"
+        android:textColor="@color/light"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="center"/>
+
+</LinearLayout>

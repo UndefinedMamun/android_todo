@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TodoFinal</string>
+    <string-array name="task_status">
+        <item>Pending</item>
+        <item>Canceled</item>
+        <item>Done</item>
+    </string-array>
+</resources>

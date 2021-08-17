@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="@drawable/background_design">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/background_retrieved"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Add a new task"
+        android:textColor="@color/dark"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <EditText
+            android:id="@+id/task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Task"
+            android:layout_margin="10dp"
+            android:textSize="16dp"
+            app:backgroundTint='#a9adb0'/>
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Details"
+            android:layout_margin="10dp"
+            android:textSize="16dp"
+            app:backgroundTint='#a9adb0'/>
+
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Time"
+            android:layout_margin="10dp"
+            android:textSize="16dp"
+            app:backgroundTint='#a9adb0'/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <Button
+                android:id="@+id/CancelBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="Cancel"
+                app:backgroundTint="@color/accent"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/light"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <Button
+                android:id="@+id/saveBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="Save"
+                app:backgroundTint="@color/accent"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/light"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
