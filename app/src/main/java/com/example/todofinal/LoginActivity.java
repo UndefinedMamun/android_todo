@@ -62,8 +62,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void doLogin(View view) {
-        String email = loginEmail.getText().toString().trim();
-        String password = loginPwd.getText().toString().trim();
+//        String email = loginEmail.getText().toString().trim();
+//        String password = loginPwd.getText().toString().trim();
+
 
         if(TextUtils.isEmpty(email)){
             loginEmail.setError("A valid email is required");
